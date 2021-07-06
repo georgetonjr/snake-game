@@ -2,6 +2,12 @@
 
 Desafio snake Game Digital Inovation One
 
+## Tecnologias usadas
+
+- HTML
+- CSS
+- JavaScript
+
 ## Features adicionadas
 
 - Score
