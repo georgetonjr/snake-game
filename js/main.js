@@ -2,6 +2,8 @@ let canvas = document.querySelector(".snake");
 let context = canvas.getContext("2d");
 let box = 32;
 
+let gameOver = false;
+
 let score = 0;
 
 let snake = [];
@@ -47,6 +49,20 @@ function addPoints() {
   document.querySelector("#score").innerHTML = `${score}`;
 }
 
+function playAgain() {
+  let tamanhaArray = snake.length + 1;
+  snake.splice(0, tamanhaArray);
+
+  snake[0] = {
+    x: 8 * box,
+    y: 8 * box,
+  };
+
+  gameOver = false;
+
+  let jogo = setInterval(iniciarJogo, 100);
+}
+
 function iniciarJogo() {
   if (snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
   if (snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
@@ -57,6 +73,7 @@ function iniciarJogo() {
     if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
       clearInterval(jogo);
       alert(`GameOver \n Score: ${score}`);
+      gameOver = true;
     }
   }
 
